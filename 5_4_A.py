@@ -2,24 +2,21 @@ def interleave(*iterables):
     """
     Standard version
     :param iterables: Unknown amount of iterables
-    :return: the list of separated members of the iterables
+    :return: List that includes the members of the iterables intertwined
     """
-    list_of_items = []
-    for iterable in iterables:
-        for item in iterable:
-            list_of_items.append(item)
-    return list_of_items
+    return [j[i] for i in range(len(iterables[0])) for j in [it for it in iterables]]
 
 
 def interleave_generator(*iterables):
     """
     Generator version
     :param iterables: Unknown amount of iterables
-    :return: the separated members of the lists
+    :return: The members of the iterables intertwined
     """
-    for iterable in iterables:
-        for item in iterable:
-            yield item
+    for i in range(len(iterables[0])):
+        for j in [it for it in iterables]:
+            yield j[i]
+         
 
 
 def main():
