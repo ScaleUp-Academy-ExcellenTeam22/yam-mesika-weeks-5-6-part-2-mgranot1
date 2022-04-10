@@ -1,28 +1,16 @@
 
-
-def possible_divisions(my_number):
-    """
-    :param my_number: a number for checking if it able to be perfect dish
-    :return: a list of all possible divisions of dish portions
-    """
-    list_possible_divisions=[]
-    for part in range(1,my_number):
-        if my_number % part == 0:
-            list_possible_divisions.append(part)
-    return list_possible_divisions
-
-
 def perfect_dish():
     """
-    :return: Perfectly divisible numbers
+    Perfect_num is number that when we sum up all its complete divisions we will get it ourselves
+    Perfect_divider divides the number without a remainder
+    :return: Perfect numbers
     """
-    my_number = 6 # The smallest size that sustains the division
-    while True: # A loop that always works
-        list_possible_divisions = possible_divisions(my_number)
-        if sum(list_possible_divisions) == my_number:
-            print(list_possible_divisions)
-            yield my_number
-        my_number += 1
+    perfect_num = 6  # The smallest size that sustains the division
+    while True:
+        list_perfect_divider = [divider for divider in range(1, perfect_num) if perfect_num % divider == 0]
+        if sum(list_perfect_divider) == perfect_num:
+            yield perfect_num
+        perfect_num += 1
 
 
 def main():
